@@ -1,0 +1,16 @@
+.dragged {
+  opacity: 0.4
+  
+}
+
+.drop-above {
+  border-top: 6px solid cornflowerblue;
+}
+
+.drop-below {
+  border-bottom: 6px solid cornflowerblue;
+}
+
+.dropzone .nested-fields * {
+  pointer-events: none;
+}

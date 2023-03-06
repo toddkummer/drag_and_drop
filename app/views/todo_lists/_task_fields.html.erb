@@ -1,9 +1,27 @@
-<div class='nested-fields'>
+<div class='nested-fields'
+    data-controller="dnd--item"
+    data-dnd--item-dnd--container-outlet="#container"
+    data-action="dragstart->dnd--item#dragStart
+                 dragend->dnd--item#dragEnd
+                 dragenter->dnd--item#addDropIndicator
+                 dragover->dnd--item#allowDrop
+                 dragleave->dnd--item#removeDropIndicator
+                 drop->dnd--item#drop" >
   <div class='form-group'>
     <%= form.hidden_field :_destroy %>
-    <%= form.text_field :description, placeholder: 'Description', class: 'form-control' %>
-    <small>
-      <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" } %>
-    </small>
+    <%= form.hidden_field :id, 
+        data: { dnd__item_target: "id" } %>
+    <%= form.text_field :sort_order, style: "width: 10px;",
+        data: { dnd__item_target: "order" }  %>
+    <%= form.text_field :description, placeholder: 'Description', class: 'form-control',
+        data: { dnd__item_target: "description" } %>
+    <a href="#" class="btn btn-primary" 
+        data-dnd--item-target="handle"
+        data-action="mousedown->dnd--item#enableDrag" >
+      <i class="fa fa-bars"></i>
+    </a>
+    <%= link_to("#", class: "btn btn-primary", data: { action: "click->nested-form#remove_association" }) do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
   </div>
 </div>

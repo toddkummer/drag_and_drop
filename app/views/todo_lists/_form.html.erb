@@ -5,7 +5,10 @@
   </div>
 
   <h1>Tasks</h1>
-  <div data-controller="nested-form">
+  <div id="container"
+    data-controller="nested-form dnd--container"
+    data-dnd--container-dnd--item-outlet=".nested-fields" 
+    data-action="mouseup->dnd--container#disableDrag" >
     <template data-target='nested-form.template'>
       <%= form.fields_for :tasks, Task.new, child_index: 'TEMPLATE_RECORD' do |task| %>
         <%= render 'task_fields', form: task %>
